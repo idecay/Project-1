@@ -6,7 +6,18 @@ Swal.fire({
   })
 
 
+//create game board
 
+//for each category
+for(let i = 1; i <= 6; i++) {
+    //name category
+    console.log("cat" + i);
+    //for each question 1-5
+    for(let j = 1; j <= 5; j++) {
+        //create button with value of 200 x question
+        console.log(j * 200);
+    }
+}
 
 
 
