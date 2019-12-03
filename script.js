@@ -9,14 +9,31 @@ Swal.fire({
 //create game board
 
 //for each category
-for(let i = 1; i <= 6; i++) {
+for(let i = 0; i < 6; i++) {
     //name category
+    let column = document.createElement('div');
+    document.body.appendChild(column).classList.add("btn-group-vertical");
     console.log("cat" + i);
     //for each question 1-5
-    for(let j = 1; j <= 5; j++) {
+    for(let j = 0; j <= 5; j++) {
         //create button with value of 200 x question
-        console.log(j * 200);
+        let tile = document.createElement('button');
+        let columnSelector = document.querySelectorAll('.btn-group-vertical');
+
+        tile.type = "button";
+        tile.className = "btn btn-primary"
+        tile.dataset.toggle = "button"
+        //tile.aria-pressed = "false"
+       // <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">200</button>
+
+
+        if (j === 0) {
+            columnSelector[i].appendChild(tile).innerText = "Cat" + i;
+        } else {
+            columnSelector[i].appendChild(tile).innerText = j * 200;
+            console.log(j * 200);
     }
+}
 }
 
 
