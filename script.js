@@ -1,9 +1,9 @@
-// Swal.fire({
-//     title: 'Welcome!',
-//     text: 'Do you want to play Jeopardy?',
-//     icon: 'question',
-//     confirmButtonText: 'Lets go!'
-//   })
+Swal.fire({
+    title: 'Welcome!',
+    text: 'Do you want to play Jeopardy?',
+    icon: 'question',
+    confirmButtonText: 'Lets go!'
+  })
 
 //create questions
 //object that has the category, question, answer, question #
@@ -200,6 +200,7 @@ const questions = [
 
 //create game board
 //for each category
+let score = 0;
 for(let i = 0; i < 6; i++) {
     let column = document.createElement('div');
     document.querySelector('#board').appendChild(column).classList.add("btn-group-vertical");
@@ -221,6 +222,7 @@ for(let i = 0; i < 6; i++) {
             columnSelector[i].appendChild(tile).innerText = j * 200;
             tile.addEventListener('click', function() {
                 console.log('click')
+                questionPopUp();
             })
     }
 }
@@ -228,33 +230,36 @@ for(let i = 0; i < 6; i++) {
 
 textFit(document.getElementsByClassName('btn'))
 
+let questionPopUp = function() {
+    const { value: fruit } = Swal.fire({
+        title: 'Select field validation',
+        input: 'select',
+        inputOptions: {
+          apples: 'Apples',
+          bananas: 'Bananas',
+          grapes: 'Grapes',
+          oranges: 'Pork'
+        },
+        inputPlaceholder: 'Select your answer',
+        showCancelButton: false,
+        inputValidator: (value) => {
+          return new Promise((resolve) => {
+            if (value === 'oranges') {
+              resolve()
+              
+            } else {
+              resolve('You need to select oranges :)')
+            }
+          })
+        }
+      })
+      
+      if (fruit) {
+        Swal.fire(`You selected: ${fruit}`)
+      }
+}
 
 
 
 
 
-
-// let timerInterval
-// Swal.fire({
-//   title: 'Auto close alert!',
-//   html: 'I will close in <b></b> milliseconds.',
-//   timer: 15000,
-//   timerProgressBar: true,
-//   onBeforeOpen: () => {
-//     Swal.showLoading()
-//     timerInterval = setInterval(() => {
-//       Swal.getContent().querySelector('b')
-//         .textContent = Swal.getTimerLeft()
-//     }, 100)
-//   },
-//   onClose: () => {
-//     clearInterval(timerInterval)
-//   }
-// }).then((result) => {
-//   if (
-//     /* Read more about handling dismissals below */
-//     result.dismiss === Swal.DismissReason.timer
-//   ) {
-//     console.log('I was closed by the timer') // eslint-disable-line
-//   }
-// })
