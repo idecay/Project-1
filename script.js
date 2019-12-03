@@ -216,12 +216,17 @@ for(let i = 0; i < 6; i++) {
             //name category
             tile.classList.add("category")
             //tile.classList.remove("btn-primary");
-           columnSelector[i].appendChild(tile).innerText = questions[i].category;
+            columnSelector[i].appendChild(tile).innerText = questions[i].category;
         } else {
             columnSelector[i].appendChild(tile).innerText = j * 200;
+            tile.addEventListener('click', function() {
+                console.log('click')
+            })
     }
 }
 }
+
+textFit(document.getElementsByClassName('btn'))
 
 
 

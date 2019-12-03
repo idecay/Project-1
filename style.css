@@ -16,8 +16,10 @@ header {
 .btn {
     background-color: rgb(6,12,233);
     color: rgb(241, 241, 30);
-    font-size: 2em;
+    font-size: 2rem;
     border-color: slategrey;
+    height: 2em;
+    width: 2em;
 }
 .category {
     color: rgb(245, 245, 230);
