@@ -1,0 +1,24 @@
+body {
+    text-align: center;
+    min-width: 400px;
+    background-color: whitesmoke;
+}
+header {
+    margin: 10px;
+    place-content: center;
+}
+.row {
+    place-content: center;
+}
+.btn-group-vertical {
+    width: 16.6%;
+}
+.btn {
+    background-color: rgb(6,12,233);
+    color: rgb(241, 241, 30);
+    font-size: 2em;
+    border-color: slategrey;
+}
+.category {
+    color: rgb(245, 245, 230);
+}
