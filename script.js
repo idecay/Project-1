@@ -220,9 +220,12 @@ for(let i = 0; i < 6; i++) {
             columnSelector[i].appendChild(tile).innerText = questions[i].category;
         } else {
             columnSelector[i].appendChild(tile).innerText = j * 200;
+            tile.value = j * 200;
             tile.addEventListener('click', function() {
-                console.log('click')
-                questionPopUp();
+                let button = this.value;
+                //console.log(button)
+                questionPopUp(button);
+                //score += parseInt(button)
             })
     }
 }
@@ -230,7 +233,8 @@ for(let i = 0; i < 6; i++) {
 
 textFit(document.getElementsByClassName('btn'))
 
-let questionPopUp = function() {
+let questionPopUp = function(input) {
+console.log('input is: ', input)
     const { value: fruit } = Swal.fire({
         title: 'Select field validation',
         input: 'select',
@@ -245,10 +249,17 @@ let questionPopUp = function() {
         inputValidator: (value) => {
           return new Promise((resolve) => {
             if (value === 'oranges') {
-              resolve()
-              
+                alert('Nice job!')
+                resolve()
+                
+                score += parseInt(input)
+                console.log(score)
+
             } else {
-              resolve('You need to select oranges :)')
+                
+                alert("Sorry that wasn't correct!")
+                score -= parseInt(input)
+              resolve()
             }
           })
         }
