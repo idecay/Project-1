@@ -24,3 +24,26 @@ header {
 .category {
   color: rgb(245, 245, 230);
 }
+
+.intro {
+  font-family: "Yellowtail", cursive;
+  font-size: 2em;
+}
+
+.title {
+  font-family: "Bungee", cursive;
+  font-size: 1.5em;
+}
+
+h1 {
+  place-content: center;
+}
+
+p {
+  font-family: "Audiowide", cursive;
+  font-size: 1.5em;
+}
+
+.invisible {
+  display: hidden;
+}

@@ -32,12 +32,6 @@ function shuffle(array) {
   return array;
 }
 
-// document.querySelector(".newGame") = confirm(Are you sure?);
-// if (r === true) {
-//   location.reload();
-// }
-//create questions
-//object that has the category, question, answer, question #
 const questions = [
   (meetingGod = {
     category: "Meeting God",
@@ -391,6 +385,7 @@ const questions = [
 //for each category
 let score = 0;
 let displayScore = document.querySelector(".score");
+
 for (let i = 0; i < 6; i++) {
   let column = document.createElement("div");
   document
@@ -419,6 +414,7 @@ for (let i = 0; i < 6; i++) {
       tile.addEventListener("click", function() {
         let button = this.value;
         questionPopUp(button, question, choices, answer);
+        tile.classList.add("invisible");
       });
     }
   }
@@ -448,12 +444,12 @@ let questionPopUp = function(input, question, choice, answer) {
         return "You must select an answer";
       }
       return new Promise(resolve => {
-        if (inputOptions[value] === answer) {
+        if (inputOptions[value].toUpperCase() === answer) {
           alert("Nice job!");
           resolve();
           score += parseInt(input);
           displayScore.textContent = score;
-          if (score >= 1000) {
+          if (score >= 10000) {
             let r = confirm("You win! Would you like to play again?");
             if (r === true) {
               location.reload();
