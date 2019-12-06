@@ -444,8 +444,11 @@ let questionPopUp = function(input, question, choice, answer) {
     inputPlaceholder: "Select your answer",
     showCancelButton: false,
     inputValidator: value => {
+      if (!value) {
+        return "You must select an answer";
+      }
       return new Promise(resolve => {
-        if (inputOptions[value].toUpperCase() === answer) {
+        if (inputOptions[value] === answer) {
           alert("Nice job!");
           resolve();
           score += parseInt(input);
@@ -470,8 +473,6 @@ let questionPopUp = function(input, question, choice, answer) {
 
 /*
 To do:
-fix bug that crashes game if no answer is submitted
-create new game button
 make category not a button
 disable tile after selected
 
