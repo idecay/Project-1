@@ -1,7 +1,10 @@
 body {
   text-align: center;
   min-width: 400px;
-  background-color: whitesmoke;
+  background-color: #cfcfcf;
+  background-image: url("3px-tile.png");
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
 }
 header {
   margin: 10px;
@@ -37,11 +40,15 @@ header {
 
 h1 {
   place-content: center;
+  /* color: white; */
+  /* text-shadow: 2px 2px 4px #000000; */
 }
 
 p {
   font-family: "Audiowide", cursive;
   font-size: 1.5em;
+  /* color: white; */
+  /* text-shadow: 2px 2px 4px #000000; */
 }
 
 .invisible {
