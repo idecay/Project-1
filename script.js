@@ -1,14 +1,17 @@
 Swal.fire({
-  title: "Welcome!",
-  text: "Do you want to play Jeopardy?",
+  title: "Welcome! This is...Jeopardy!",
+  text: "What should we call you?",
+  input: "text",
   icon: "question",
   confirmButtonText: "Lets go!"
+}).then(result => {
+  if (result.value) {
+    const answers = result.value;
+    document.querySelector(".username").textContent = answers;
+  }
 });
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
-
+//the Fisher-Yates shuffle
 function shuffle(array) {
   var currentIndex = array.length,
     temporaryValue,
@@ -272,7 +275,7 @@ const questions = [
         category: "I Won't Be In Today",
         question:
           "From him around 1400: Fynishd wrytng my Tales & am off to finde a prufreadur; myghte take a whil",
-        answer: "CHAUCER",
+        answer: "GEOFFREY CHAUCER",
         options: [
           "John Skelton",
           "Johannes Gutenberg",
@@ -309,7 +312,7 @@ const questions = [
           "The Chow Line",
           "The Congo Line",
           "The Prime Meridian",
-          "The Equater"
+          "The Equator"
         ],
         questionNum: 3
       }),
@@ -341,7 +344,7 @@ const questions = [
     questionData: [
       (q01 = {
         question: "This classmate makes a killer jambalaya",
-        answer: "Josh",
+        answer: "JOSH",
         options: ["Dasiane", "Chris", "Eric", "Josh"],
         questionNum: 1
       }),
@@ -349,7 +352,7 @@ const questions = [
         category: "SEI-25",
         question:
           "This person is probably contractually obligated to name drop Wes Bos at least once a day",
-        answer: "Chad",
+        answer: "CHAD",
         options: ["Colton", "Michael", "Josh", "Chad"],
         questionNum: 2
       }),
@@ -357,7 +360,7 @@ const questions = [
         category: "SEI-25",
         question:
           "This classmate is a dedicated mother...oops I may have said too much",
-        answer: "Dasiane",
+        answer: "DASIANE",
         options: ["Chris", "Eric", "Colton", "Dasiane"],
         questionNum: 3
       }),
@@ -365,14 +368,14 @@ const questions = [
         category: "SEI-25",
         question:
           "This classmate had to be forced to go home for Thanksgiving break",
-        answer: "Ozzie",
+        answer: "OZZIE",
         options: ["Chad", "Michael", "Dasiane", "Ozzie"],
         questionNum: 4
       }),
       (q05 = {
         category: "SEI-25",
         question: "This classmate just finished his presentaion",
-        answer: "Chris",
+        answer: "CHRIS",
         options: ["Ozzie", "Josh", "Eric", "Chris"],
         questionNum: 5
       })
@@ -444,8 +447,10 @@ let questionPopUp = function(input, question, choice, answer) {
           score += parseInt(input);
           displayScore.textContent = score;
           if (score >= 1000) {
-            alert("You win!");
-            location.reload();
+            let r = confirm("You win! Would you like to play again?");
+            if (r === true) {
+              location.reload();
+            }
           }
         } else {
           console.log(inputOptions[value]);
@@ -465,6 +470,8 @@ fix bug that crashes game if no answer is submitted
 create new game button
 make category not a button
 disable tile after selected
+
+
 
 
 */
