@@ -467,7 +467,7 @@ let questionPopUp = function(input, question, choice, answer) {
               location.reload();
             }
           }
-          if (count === 2) {
+          if (count === 30) {
             let r = confirm("You lose! Would you like to play again?");
             if (r === true) {
               location.reload();
