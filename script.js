@@ -423,30 +423,32 @@ let questionPopUp = function(input, question, choice, answer) {
   console.log("input is: ", input);
   console.log("answer is: ", answer);
   console.log("Choices are: ", choice);
-  //shuffle(choice);
+  shuffle(choice);
+  let inputOptions = {
+    wrong1: choice[0],
+    wrong2: choice[1],
+    wrong3: choice[2],
+    correct: choice[3]
+  };
   const { value: fruit } = Swal.fire({
     title: question,
     input: "select",
-    inputOptions: {
-      wrong1: choice[0],
-      wrong2: choice[1],
-      wrong3: choice[2],
-      correct: choice[3]
-    },
+    inputOptions: inputOptions,
     inputPlaceholder: "Select your answer",
     showCancelButton: false,
     inputValidator: value => {
       return new Promise(resolve => {
-        if (value === "correct") {
+        if (inputOptions[value].toUpperCase() === answer) {
           alert("Nice job!");
           resolve();
           score += parseInt(input);
           displayScore.textContent = score;
-          if (score >= 10000) {
+          if (score >= 1000) {
             alert("You win!");
             location.reload();
           }
         } else {
+          console.log(inputOptions[value]);
           alert("Sorry that wasn't correct!");
           resolve();
           score -= parseInt(input);
