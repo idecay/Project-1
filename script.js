@@ -32,6 +32,10 @@ function shuffle(array) {
   return array;
 }
 
+// document.querySelector(".newGame") = confirm(Are you sure?);
+// if (r === true) {
+//   location.reload();
+// }
 //create questions
 //object that has the category, question, answer, question #
 const questions = [
