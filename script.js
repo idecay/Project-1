@@ -384,6 +384,7 @@ const questions = [
 //create game board
 //for each category
 let score = 0;
+let count = 0;
 let displayScore = document.querySelector(".score");
 
 for (let i = 0; i < 6; i++) {
@@ -412,10 +413,15 @@ for (let i = 0; i < 6; i++) {
       let question = questions[i].questionData[j - 1].question;
       let choices = questions[i].questionData[j - 1].options;
       let answer = questions[i].questionData[j - 1].answer;
+
       tile.addEventListener("click", function() {
         let button = this.value;
+        console.log("count before: ", count);
+
         questionPopUp(button, question, choices, answer);
+
         tile.classList.add("invisible");
+        console.log("count after: ", count);
       });
     }
   }
@@ -450,11 +456,19 @@ let questionPopUp = function(input, question, choice, answer) {
       return new Promise(resolve => {
         if (inputOptions[value].toUpperCase() === answer) {
           alert("Nice job!");
+          count++;
+
           resolve();
           score += parseInt(input);
           displayScore.textContent = score;
-          if (score >= 1000) {
+          if (score >= 10000) {
             let r = confirm("You win! Would you like to play again?");
+            if (r === true) {
+              location.reload();
+            }
+          }
+          if (count === 2) {
+            let r = confirm("You lose! Would you like to play again?");
             if (r === true) {
               location.reload();
             }
@@ -462,9 +476,16 @@ let questionPopUp = function(input, question, choice, answer) {
         } else {
           console.log(inputOptions[value]);
           alert("Sorry that wasn't correct!");
+          count++;
           resolve();
           score -= parseInt(input);
           displayScore.textContent = score;
+          if (count === 30) {
+            let r = confirm("You lose! Would you like to play again?");
+            if (r === true) {
+              location.reload();
+            }
+          }
         }
       });
     }
