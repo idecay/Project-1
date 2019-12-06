@@ -458,3 +458,13 @@ let questionPopUp = function(input, question, choice, answer) {
     }
   });
 };
+
+/*
+To do:
+fix bug that crashes game if no answer is submitted
+create new game button
+make category not a button
+disable tile after selected
+
+
+*/
