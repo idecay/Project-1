@@ -398,6 +398,7 @@ for (let i = 0; i < 6; i++) {
     let tile = document.createElement("button");
     let columnSelector = document.querySelectorAll(".btn-group-vertical");
     tile.type = "button";
+    //change to classlist.add
     tile.className = "btn btn-primary";
     tile.dataset.toggle = "button";
 
@@ -439,6 +440,9 @@ let questionPopUp = function(input, question, choice, answer) {
     inputOptions: inputOptions,
     inputPlaceholder: "Select your answer",
     showCancelButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+
     inputValidator: value => {
       if (!value) {
         return "You must select an answer";
@@ -449,7 +453,7 @@ let questionPopUp = function(input, question, choice, answer) {
           resolve();
           score += parseInt(input);
           displayScore.textContent = score;
-          if (score >= 10000) {
+          if (score >= 1000) {
             let r = confirm("You win! Would you like to play again?");
             if (r === true) {
               location.reload();
@@ -470,7 +474,7 @@ let questionPopUp = function(input, question, choice, answer) {
 /*
 To do:
 make category not a button
-disable tile after selected
+fix esc and outclick
 
 
 
