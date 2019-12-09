@@ -1,37 +1,3 @@
-Swal.fire({
-  title: "Welcome! This is...Jeopardy!",
-  text: "What should we call you?",
-  input: "text",
-  icon: "question",
-  confirmButtonText: "Lets go!"
-}).then(result => {
-  if (result.value) {
-    const answers = result.value;
-    document.querySelector(".username").textContent = answers;
-  }
-});
-
-//the Fisher-Yates shuffle
-function shuffle(array) {
-  var currentIndex = array.length,
-    temporaryValue,
-    randomIndex;
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
-
 const questions = [
   (meetingGod = {
     category: "Meeting God",
@@ -357,7 +323,7 @@ const questions = [
       (q03 = {
         category: "SEI-25",
         question:
-          "This classmate is a dedicated mother...oops I may have said too much",
+          "This classmate is a dedicated mother...oops I may have given that one away",
         answer: "DASIANE",
         options: ["Chris", "Eric", "Colton", "Dasiane"],
         questionNum: 3
@@ -380,15 +346,69 @@ const questions = [
     ]
   })
 ];
+//greet the user
+Swal.fire({
+  title: "Welcome! This is...Jeopardy!",
+  text: "What should we call you?",
+  input: "text",
+  icon: "question",
+  confirmButtonText: "Lets go!"
+}).then(result => {
+  if (result.value) {
+    const answers = result.value;
+    document.querySelector(".username").textContent = answers;
+  }
+});
 
-//create game board
-//for each category
+//the Fisher-Yates shuffle
+function shuffle(array) {
+  var currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+//write lose condition
+let loseCondition = function() {
+  if (count === 30) {
+    let r = confirm("You lose! Would you like to play again?");
+    if (r === true) {
+      location.reload();
+    }
+  }
+};
+
+//write win condition
+let winCondition = function() {
+  if (score >= 3000) {
+    let r = confirm("You win! Would you like to play again?");
+    if (r === true) {
+      location.reload();
+    }
+  }
+};
+
 let score = 0;
 let count = 0;
 let displayScore = document.querySelector(".score");
 let wrong = document.querySelector(".wrong");
 let correct = document.querySelector(".correct");
 
+//create game board
+//for each category
 for (let i = 0; i < 6; i++) {
   let column = document.createElement("div");
   document
@@ -418,10 +438,7 @@ for (let i = 0; i < 6; i++) {
 
       tile.addEventListener("click", function() {
         let button = this.value;
-        console.log("count before: ", count);
-
         questionPopUp(button, question, choices, answer);
-
         tile.classList.add("invisible");
         console.log("count after: ", count);
       });
@@ -439,7 +456,7 @@ let questionPopUp = function(input, question, choice, answer) {
     wrong3: choice[2],
     correct: choice[3]
   };
-  const { value: fruit } = Swal.fire({
+  const { value: select } = Swal.fire({
     title: question,
     input: "select",
     inputOptions: inputOptions,
@@ -455,42 +472,26 @@ let questionPopUp = function(input, question, choice, answer) {
       return new Promise(resolve => {
         if (inputOptions[value].toUpperCase() === answer) {
           correct.play();
-          {
-            count++;
-
-            resolve();
-            score += parseInt(input);
-            displayScore.textContent = score;
-            if (score >= 7000) {
-              let r = confirm("You win! Would you like to play again?");
-              if (r === true) {
-                location.reload();
-              }
-            }
-            if (count === 30) {
-              let r = confirm("You lose! Would you like to play again?");
-              if (r === true) {
-                location.reload();
-              }
-            }
-          }
+          resolve();
+          count++;
+          score += parseInt(input);
+          displayScore.textContent = score;
+          winCondition();
+          loseCondition();
         } else {
-          console.log(inputOptions[value]);
           wrong.play();
           count++;
           resolve();
           score -= parseInt(input);
           displayScore.textContent = score;
-          if (count === 30) {
-            let r = confirm("You lose! Would you like to play again?");
-            if (r === true) {
-              location.reload();
-            }
-          }
+          loseCondition();
         }
       });
     }
   });
+  if (select) {
+    Swal.fire(`You selected: ${select}`);
+  }
 };
 
 /*
