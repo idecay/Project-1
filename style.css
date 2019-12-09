@@ -6,10 +6,13 @@ body {
 }
 header {
   margin: 10px;
-  place-content: center;
+  justify-items: center;
+  align-items: center;
 }
 .row {
   place-content: center;
+  justify-items: center;
+  align-items: center;
 }
 .btn-group-vertical {
   width: 16.6%;
