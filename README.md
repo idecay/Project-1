@@ -16,7 +16,10 @@ Begin by selecting a point value underneath its corresponding category. Select t
 
 ## Wireframe
 
-!["A wireframe of This is...Jeopardy!"](https://github.com/idecay/Project-1/blob/master/Screenshot%20from%202019-12-02%2011-22-42.png?raw=true)
+!["A wireframe of This is...Jeopardy! gameboard"](https://github.com/idecay/Project-1/blob/master/Screenshot%20from%202019-12-02%2011-22-42.png?raw=true)
+
+!["A wireframe of This is...Jeopardy! answer modal"](https://github.com/idecay/Project-1/blob/master/Screenshot%20from%202019-12-02%2011-24-06.png?raw=true)
+!["A wireframe of This is...Jeopardy! endgame modal"](https://github.com/idecay/Project-1/blob/master/Screenshot%20from%202019-12-02%2012-20-03.png?raw=true)
 
 ## Technologies Used
 
