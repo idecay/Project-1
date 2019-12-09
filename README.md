@@ -2,7 +2,7 @@
 
 General Assembly SEI-25 Project #1
 
-- Project:
+- Project: https://upbeat-brattain-0497c2.netlify.com/
 - Trello Board: https://trello.com/b/bPKDmSHs/project-1
 - GitHub: https://github.com/idecay/Project-1
 
