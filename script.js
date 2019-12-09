@@ -455,22 +455,30 @@ let questionPopUp = function(input, question, choice, answer) {
       }
       return new Promise(resolve => {
         if (inputOptions[value].toUpperCase() === answer) {
-          alert("Nice job!");
-          count++;
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          }).then();
+          {
+            count++;
 
-          resolve();
-          score += parseInt(input);
-          displayScore.textContent = score;
-          if (score >= 10000) {
-            let r = confirm("You win! Would you like to play again?");
-            if (r === true) {
-              location.reload();
+            resolve();
+            score += parseInt(input);
+            displayScore.textContent = score;
+            if (score >= 7000) {
+              let r = confirm("You win! Would you like to play again?");
+              if (r === true) {
+                location.reload();
+              }
             }
-          }
-          if (count === 30) {
-            let r = confirm("You lose! Would you like to play again?");
-            if (r === true) {
-              location.reload();
+            if (count === 30) {
+              let r = confirm("You lose! Would you like to play again?");
+              if (r === true) {
+                location.reload();
+              }
             }
           }
         } else {

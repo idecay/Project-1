@@ -21,6 +21,7 @@ header {
   border-color: slategrey;
   height: 2em;
   width: 2em;
+  text-shadow: 2px 2px 4px #000000;
 }
 .category {
   color: rgb(245, 245, 230);
