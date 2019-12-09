@@ -386,6 +386,8 @@ const questions = [
 let score = 0;
 let count = 0;
 let displayScore = document.querySelector(".score");
+let wrong = document.querySelector(".wrong");
+let correct = document.querySelector(".correct");
 
 for (let i = 0; i < 6; i++) {
   let column = document.createElement("div");
@@ -455,13 +457,7 @@ let questionPopUp = function(input, question, choice, answer) {
       }
       return new Promise(resolve => {
         if (inputOptions[value].toUpperCase() === answer) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Your work has been saved",
-            showConfirmButton: false,
-            timer: 1500
-          }).then();
+          correct.play();
           {
             count++;
 
@@ -483,7 +479,7 @@ let questionPopUp = function(input, question, choice, answer) {
           }
         } else {
           console.log(inputOptions[value]);
-          alert("Sorry that wasn't correct!");
+          wrong.play();
           count++;
           resolve();
           score -= parseInt(input);
@@ -503,7 +499,6 @@ let questionPopUp = function(input, question, choice, answer) {
 /*
 To do:
 make category not a button
-fix esc and outclick
 
 
 
