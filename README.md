@@ -16,6 +16,8 @@ Begin by selecting a point value underneath its corresponding category. Select t
 
 ## Wireframe
 
+(https://github.com/idecay/Project-1/blob/master/Screenshot%20from%202019-12-02%2011-22-42.pngraw=true)
+
 ## Technologies Used
 
 Languages: HTML, CSS, and Javascript
