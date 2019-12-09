@@ -432,9 +432,6 @@ for (let i = 0; i < 6; i++) {
 textFit(document.getElementsByClassName("btn"));
 
 let questionPopUp = function(input, question, choice, answer) {
-  console.log("input is: ", input);
-  console.log("answer is: ", answer);
-  console.log("Choices are: ", choice);
   shuffle(choice);
   let inputOptions = {
     wrong1: choice[0],
